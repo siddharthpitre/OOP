@@ -1,0 +1,86 @@
+import java.util.Scanner;
+
+public class Shape{
+    protected double x,y;
+
+    public void getdata(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the value of x : ");
+        x=sc.nextDouble();
+        System.out.println("Enter the value of y : ");
+        y= sc.nextDouble();
+    }
+    public void compute_area(){
+        System.out.println("I am in the Shape class.");
+
+    }
+}
+
+
+
+
+
+
+import java.util.Scanner;
+
+public class Circle extends Shape {
+    public void getdata(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the value of x : ");
+        x= sc.nextDouble();
+    }
+    public void compute_area(){
+        double area=Math.PI*x*x;
+        System.out.println("Area of circle is : "+area);
+    }
+}
+
+
+
+
+
+
+
+
+import java.util.Scanner;
+
+public class Polymorphism {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int a;
+        do {
+            System.out.println("========Menu=========");
+            System.out.println("1.Area of circle.");
+            System.out.println("2.Area of Triangle.");
+            System.out.println("3.Area of Rectangle.");
+            System.out.println("4.Exit.");
+            a = sc.nextInt();
+            Shape ref;
+            switch (a) {
+                case 1:
+                    ref = new Circle();
+                    ref.getdata();
+                    ref.compute_area();
+                    break;
+
+                case 2:
+                    ref = new Triangle();
+                    ref.getdata();
+                    ref.compute_area();
+                    break;
+
+                case 3:
+                    ref = new Rectangle();
+                    ref.getdata();
+                    ref.compute_area();
+                    break;
+
+                case 4:
+                    break;
+
+            }
+
+        }while (a!=4);
+    }
+}

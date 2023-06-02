@@ -1,0 +1,71 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+public class Arithmetic_Opr {
+    private int num1, num2;
+
+    public void getdata() {
+        Scanner sc = new Scanner(System.in);
+        try {
+            System.out.print("Enter the value of Num 1: ");
+            num1 = sc.nextInt();
+            System.out.print("Enter the value of Num 2: ");
+            num2 = sc.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Input Mismatch Exception is Handled!\nRe-enter the Numbers. ");
+            getdata();
+        }
+    }
+    public void division(){
+        int num3 = num1 / num2;
+        System.out.println(num1+"/"+num2+"= "+num3);
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+import java.util.Scanner;
+public class ExceptionHandling {
+    public static void Run(){
+        Arithmetic_Opr aop = new Arithmetic_Opr();
+        try {
+            aop.getdata();
+            aop.division();
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception is Handled!");
+        } catch (NullPointerException e) {
+            System.out.println("Runtime Exception is Handled!");
+        } catch (NumberFormatException e) {
+            System.out.println("Number Format Exception is Handled!");
+        }
+        System.out.println("Division is Finished");
+    }
+
+
+    public static void main(String[] args) {
+        Run();
+        int con;
+        do {
+            Scanner sc=new Scanner(System.in);
+            con = 0;
+            System.out.println("Do you want to\n1.Continue\n2.Exit");
+            System.out.print("Choice: ");
+            con=sc.nextInt();
+            if (con==1){
+                Run();
+            }
+            else
+                break;
+        } while (con==1);
+
+}
+
+}

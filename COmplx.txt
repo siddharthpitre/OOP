@@ -1,0 +1,107 @@
+public class ComplexConstructor {
+    private int real , img  ;
+
+    public ComplexConstructor (int x , int y)			//Parameterized Constructor (x,y int type variable to store passed value)
+    {
+        real = x ;
+        img = y ;
+    }
+
+    public ComplexConstructor()							//Default Constructor (called when new obj created)
+    {
+        real = 0 ;
+        img = 0 ;
+    }
+
+    public void Add(ComplexConstructor x , ComplexConstructor y) 			// Methods ( Here x,y of ComplexConstructor user defined datatype i.e class)
+    {																		// x,y will create copy of original obj and make changes in it
+        real = x.real + y.real ;
+        img = x.img + y.img ;
+    }
+
+    public void Subtract(ComplexConstructor x , ComplexConstructor y)
+    {
+        real = x.real - y.real ;
+        img = x.img - y.img ;
+    }
+
+    public void Multiply(ComplexConstructor x , ComplexConstructor y)
+    {
+        real = (x.real*y.real - x.img*y.img) ;
+        img = (x.real*y.img - y.real*x.img) ;
+    }
+
+    public void Divide(ComplexConstructor x , ComplexConstructor y)
+    {
+        real = (x.real*y.real + x.img*y.img)/(y.real*y.real + y.img*y.img) ;
+        img = (x.img*y.real - x.real*y.img)/(y.real*y.real + y.img*y.img) ;
+    }
+
+    public void display()
+    {
+        System.out.println(real+"+"+img+"i") ;
+    }
+
+}
+
+
+
+
+
+
+
+
+import java.util.* ;
+public class ComplexConstructor_Op {
+
+    public static void main(String[] args) {
+        int real1, real2, img1, img2,choice ;
+        Scanner Sc = new Scanner(System.in) ;
+
+        System.out.println("Enter First No Real and Img value :") ;
+        real1 = Sc.nextInt() ;
+        img1 = Sc.nextInt() ;
+        ComplexConstructor obj1 = new ComplexConstructor(real1 , img1) ;
+
+        System.out.println("Enter Second No Real and Img value :") ;
+        real2 = Sc.nextInt() ;
+        img2 = Sc.nextInt();
+        ComplexConstructor obj2 = new ComplexConstructor(real2 , img2 ) ;
+
+        ComplexConstructor obj3 = new ComplexConstructor() ;
+
+        System.out.println("Enter 1 For Add") ;
+        System.out.println("Enter 2 For Subtract") ;
+        System.out.println("Enter 3 For Multiply") ;
+        System.out.println("Enter 4 For Divide") ;
+
+        do
+        {
+            choice = Sc.nextInt();
+            switch (choice)
+            {
+                case 1 :
+                    obj3.Add(obj1 , obj2) ;
+                    System.out.println("Operation Complete Enter 5 to get output") ;
+                    break ;
+                case 2 :
+                    obj3.Subtract(obj1 , obj2) ;
+                    System.out.println("Operation Complete Enter 5 to get output") ;
+                    break ;
+                case 3 :
+                    obj3.Multiply(obj1 , obj2) ;
+                    System.out.println("Operation Complete Enter 5 to get output") ;
+                    break ;
+                case 4:
+                    obj3.Divide(obj1 , obj2) ;
+                    System.out.println("Operation Complete Enter 5 to get output") ;
+                    break ;
+                case 5:
+                    obj3.display();
+            }
+
+        }while (choice != 5) ;
+
+    }
+
+}
